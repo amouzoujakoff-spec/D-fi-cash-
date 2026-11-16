@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#102b21">
+<title>DÉFI CASH — Football Quiz</title>
+<style>
+:root{--green:#123629;--lime:#d8ff8b;--bg:#f3f6f3;--ink:#17251e;--muted:#64736a;--line:#dce5de}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);font-family:system-ui,-apple-system,Segoe UI,sans-serif;color:var(--ink)}
+.app{max-width:520px;margin:auto;min-height:100vh;background:#fff;box-shadow:0 0 30px #102b2110}
+header{background:linear-gradient(145deg,#102b21,#1b5139);color:white;padding:24px 20px 20px;border-radius:0 0 24px 24px}
+.top{display:flex;justify-content:space-between;align-items:center}.logo{font-weight:900;font-size:22px;letter-spacing:.4px}.pill{font-size:11px;background:#d8ff8b;color:#183426;padding:5px 9px;border-radius:20px;font-weight:800}
+h1{font-size:27px;line-height:1.15;margin:22px 0 6px;color:var(--lime)}.sub{color:#d2e3d8;font-size:13px}
+.stats{display:flex;justify-content:space-between;margin-top:22px}.stat small{display:block;color:#c7d9ce;font-size:11px}.stat strong{font-size:25px}
+main{padding:20px}.section-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}.eyebrow{font-size:11px;font-weight:800;color:#47705a;letter-spacing:1px}.tag{font-size:11px;background:#eef7e8;color:#3c6b36;padding:6px 9px;border-radius:20px;font-weight:700}
+.progress{height:7px;background:#e9efea;border-radius:10px;overflow:hidden;margin:12px 0 22px}.bar{height:100%;width:0;background:#3b9b61;transition:width .2s}
+.question{font-size:20px;line-height:1.3;margin:0 0 18px}.answers{display:grid;gap:10px}.answer{width:100%;text-align:left;border:1px solid var(--line);background:#fff;border-radius:13px;padding:14px;font-size:15px;font-weight:650;color:var(--ink);display:flex;gap:12px;align-items:center;cursor:pointer}.answer .letter{width:27px;height:27px;border-radius:9px;background:#eef3ef;display:grid;place-items:center;font-size:12px}.answer:disabled{cursor:default;opacity:1}.answer.correct{border:2px solid #2e9a59;background:#f0faf3}.answer.wrong{border:2px solid #d35c52;background:#fff5f4}
+.feedback{margin-top:14px;padding:13px;border-radius:12px;background:#f1f5f2;font-size:13px;line-height:1.45}.primary{border:0;background:#173d2d;color:white;font-weight:800;padding:14px 18px;border-radius:12px;width:100%;font-size:15px;margin-top:14px;cursor:pointer}.primary:disabled{opacity:.5}
+.card{border:1px solid var(--line);border-radius:16px;padding:16px;margin-top:18px}.card h2{font-size:16px;margin:0 0 12px}.rank{display:flex;justify-content:space-between;padding:9px 0;border-top:1px solid #edf1ee;font-size:14px}.ad{background:#f5f7f5;border:1px dashed #a9b8ae;border-radius:14px;padding:15px;margin-top:18px}.ad strong{font-size:14px}.ad p{margin:5px 0 0;color:var(--muted);font-size:12px;line-height:1.4}
+.note{font-size:11px;color:var(--muted);line-height:1.5;margin:16px 2px}.result{text-align:center;padding:20px 5px}.trophy{font-size:42px}.result h2{margin:8px 0}.result strong{font-size:34px;color:#27824b}
+footer{padding:18px 20px 28px;text-align:center;color:#87948c;font-size:11px}
+</style></head>
+<body><div class="app">
+<header>
+ <div class="top"><div class="logo">⚽ DÉFI CASH</div><span class="pill">VERSION BÊTA</span></div>
+ <h1>Joue. Réponds.<br>Progresse !</h1><div class="sub">Le quiz des passionnés de football</div>
+ <div class="stats"><div class="stat"><small>TES POINTS</small><strong id="points">0</strong></div><div class="stat"><small>MEILLEUR SCORE</small><strong id="best">0</strong></div><div class="stat"><small>QUESTION</small><strong id="counter">1/5</strong></div></div>
+</header>
+<main>
+ <div id="game">
+  <div class="section-head"><span class="eyebrow" id="qnum">QUESTION 1</span><span class="tag">+10 points</span></div>
+  <div class="progress"><div class="bar" id="bar"></div></div>
+  <h2 class="question" id="question"></h2><div class="answers" id="answers"></div>
+  <div id="feedback" aria-live="polite"></div><button class="primary" id="next" hidden>Question suivante</button>
+ </div>
+ <div id="result" class="result" hidden><div class="trophy">🏆</div><h2>Défi terminé !</h2><strong id="finalscore">0/50</strong><p id="message">Bravo pour ta participation.</p><button class="primary" id="replay">Rejouer</button></div>
+ <section class="card"><h2>🏅 Classement de démonstration</h2><div class="rank"><span>🥇 Kossi</span><b>120 pts</b></div><div class="rank"><span>🥈 Ama</span><b>90 pts</b></div><div class="rank"><span>🥉 Junior</span><b>70 pts</b></div><p class="note">Ce classement est fictif dans cette version. Les comptes et le classement en ligne seront ajoutés dans une version connectée.</p></section>
+ <section class="ad"><strong>📢 Espace partenaire / publicité</strong><p>Emplacement réservé aux sponsors ou à un réseau publicitaire après intégration et validation du compte éditeur.</p></section>
+ <p class="note">Les points sont uniquement des points de jeu. Aucun argent réel, retrait, pari ou paiement n'est activé dans cette version. Les récompenses éventuelles nécessitent un budget, des règles transparentes et une vérification juridique.</p>
+</main><footer>DÉFI CASH · Prototype de jeu football · © 2026</footer>
+</div>
+<script>
+const quiz=[
+ {q:"Combien de joueurs une équipe compte-t-elle sur le terrain au début d'un match ?",a:["9","11","12","10"],correct:1,why:"Une équipe commence avec 11 joueurs, gardien compris."},
+ {q:"Quelle nation a remporté la Coupe du monde masculine 2022 ?",a:["France","Brésil","Argentine","Allemagne"],correct:2,why:"L'Argentine a remporté la finale contre la France."},
+ {q:"Combien de minutes dure un match réglementaire, hors temps additionnel et prolongation ?",a:["80","90","100","120"],correct:1,why:"Le temps réglementaire est de deux périodes de 45 minutes."},
+ {q:"Quel joueur est surnommé CR7 ?",a:["Lionel Messi","Neymar","Kylian Mbappé","Cristiano Ronaldo"],correct:3,why:"CR7 est le surnom de Cristiano Ronaldo."},
+ {q:"La Premier League est le championnat de quel pays ?",a:["Espagne","Angleterre","Italie","Portugal"],correct:1,why:"La Premier League est le championnat anglais."}
+];
+let index=0,score=0,answered=false;const $=id=>document.getElementById(id);
+let best=Number(localStorage.getItem("deficash-best")||0);$("best").textContent=best;
+function render(){answered=false;$("feedback").innerHTML="";$("next").hidden=true;$("qnum").textContent="QUESTION "+(index+1);$("counter").textContent=(index+1)+"/5";$("bar").style.width=((index)/5*100)+"%";$("question").textContent=quiz[index].q;$("answers").innerHTML="";
+quiz[index].a.forEach((answer,i)=>{let b=document.createElement("button");b.className="answer";b.innerHTML='<span class="letter">'+String.fromCharCode(65+i)+'</span><span></span>';b.querySelector("span:last-child").textContent=answer;b.onclick=()=>choose(i);$("answers").appendChild(b)});}
+function choose(i){if(answered)return;answered=true;let q=quiz[index],buttons=[...$("answers").children];buttons.forEach((b,j)=>{b.disabled=true;if(j===q.correct)b.classList.add("correct");if(j===i&&i!==q.correct)b.classList.add("wrong")});if(i===q.correct){score+=10;$("points").textContent=score;$("feedback").innerHTML='<div class="feedback">✅ <b>Bonne réponse !</b> '+q.why+'</div>'}else{$("feedback").innerHTML='<div class="feedback">❌ <b>Pas tout à fait.</b> '+q.why+'</div>'}$("next").hidden=false;$("next").textContent=index===4?"Voir mon résultat":"Question suivante";}
+$("next").onclick=()=>{if(index<4){index++;render()}else finish()};function finish(){ $("game").hidden=true;$("result").hidden=false;$("bar").style.width="100%";$("finalscore").textContent=score+"/50";$("message").textContent=score===50?"Excellent ! Tu maîtrises le football.":score>=30?"Très bon résultat. Continue à t'entraîner !":"Merci d'avoir joué. Reviens relever le défi !";if(score>best){best=score;localStorage.setItem("deficash-best",best);$("best").textContent=best;}}
+$("replay").onclick=()=>{index=0;score=0;$("points").textContent="0";$("result").hidden=true;$("game").hidden=false;render()};render();
+</script></body></html>
